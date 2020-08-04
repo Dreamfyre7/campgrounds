@@ -1,0 +1,46 @@
+.thumbnail img{
+    width:100%
+}
+.thumbnail{padding:0}
+
+.thumbnail .caption-full{
+    padding:9px;
+}
+
+#deleteform{
+    display: inline;
+}
+tr td{
+    padding:10px
+}
+form #div{
+    display:inline-block;
+}
+div+h4{
+    font-size: 0px;
+}
+
+#css{
+    height:200px;
+}
+#css2{
+    height:200px;
+    width:358px;
+}
+#css3{
+    height:200px;
+    width:300px;
+    transition:transform .5s;
+}
+#css3:hover{
+    transform:scale(1.2);
+}
+#member{
+    height:160px;
+    width:250px;
+    margin-right:20px;
+    transition:transform .5s;
+}
+#member:hover{
+    transform:scale(1.2);
+}

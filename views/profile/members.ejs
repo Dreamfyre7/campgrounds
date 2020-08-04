@@ -1,0 +1,32 @@
+<%- include ('../partials/header') %>
+<div class="container">
+    <header class="jumbotron" style="width:90%;margin:25px auto">
+        <h1><i class="fas fa-users"></i>WizCamp Members<i class="fas fa-hiking"></i></h1>
+        <form action="/members" method="get" class="form-inline">
+            <div class="form-group">
+                <input type="text" name="search" placeholder="search members" class="form-control">
+                <input type="submit" value="search" class="btn btn-default">
+            </div>
+        </form>
+        <h4 style="color:green"><%=active%></h4>
+    </header>
+    <div class="row" style="width:80%; margin:25px auto">
+        <div>
+            <hr>
+            <% umodels.forEach(function(umodels){ %>
+                <div class="well">
+                    <div class="row">
+                        <div class="col-md-7">
+                            <a href="/user/<%=umodels._id%>"><h3><%=umodels.username%></h3></a>
+                            <h4><%=umodels.bio%></h4>
+                        </div>
+                        
+                            <span class="pull-right"><img src="<%=umodels.display%>" id="member"></span>
+                        
+                    </div>    
+                </div>
+            <% }); %>
+        </div>
+    </div>
+</div>        
+

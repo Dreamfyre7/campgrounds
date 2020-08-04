@@ -1,0 +1,94 @@
+<%- include ('../partials/header') %>
+<div class="container">
+    <div class="jumbotron">
+    <h2 style="text-align:center">welcome to <%=umodel.username%>'s profile</h1>
+    <div class="row" style="display:flex ; flex-wrap:wrap;">
+        <div class="col-md-3">
+            <div class="thumbnail">
+                <img src="<%=umodel.display%>" id="css3">
+                <div class="caption">
+                    <h4 style="text-align: center;"><%=umodel.username%></h4>
+                </div>
+            </div>
+            <% if (currentuser && currentuser._id.equals(umodel._id)){%>
+                <div class=" form-group">
+                    <a class="btn btn-lg btn-primary btn-block" href="/user/<%=currentuser._id%>/edit">Edit Profile</a>
+                </div>
+            <%}%>
+        </div>
+        <div class="col-md-9">
+            <div class="container">
+                    <table>
+                        <tr>
+                            <td><strong>Name</strong></td>
+                            <td><%=umodel.fullname%></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Gender</strong></td>
+                            <td><%=umodel.gender%></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Email</strong></td>
+                            <td><%=umodel.email%></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Contact no.</strong></td>
+                            <td><%=umodel.number%></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Birthday</strong></td>
+                            <td><%=umodel.dob.toLocaleString().slice(0,8)%></td>
+                        </tr>
+                        <tr>
+                            <td><strong>About You</strong></td>
+                            <td><%=umodel.bio%></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <button class="btn btn-primary btn-block" onclick="showImage();" id="b">show pictures</button>
+                </div>    
+            </div> 
+            <div class="col-md-9">
+                <div class="form-group">
+                    <p style="text-align:right"><a class="btn btn-primary btn-large"  href="/campgrounds/new" style="text-align:right">Add new Campground</a></p>
+                </div>
+            </div>   
+        </div>           
+    </div>
+    <div class="row text-center" style="display:flex ; flex-wrap:wrap; visibility: hidden;" id="loadingImage">
+        <%umodel.campgrounds.forEach(function(campground){%>
+            <div class="col-md-4 col-sm-6">
+                <div class="thumbnail">
+                    <img src= "<%=campground.image%>" id="css2">
+                    <div class="caption">
+                        <h4><%=campground.name%></h4>
+                    </div>
+                    <p>
+                        <a href="/campgrounds/<%=campground._id%>" class="btn btn-primary">More info</a>
+                    </p>
+                </div>
+            </div>
+        <% }); %>
+    </div>
+    <script>
+        function showImage()
+        {
+            var btn = document.getElementById("b");
+            if(btn.innerHTML=="show pictures")
+            {
+                btn.value="Hide pictures";
+                btn.innerHTML = 'Hide pictures';
+                document.getElementById('loadingImage').style.visibility="visible";
+            }
+            else if(btn.innerHTML=="Hide pictures")
+            {
+                btn.value="show pictures";
+                btn.innerHTML = 'show pictures';
+                document.getElementById('loadingImage').style.visibility="hidden";
+            }
+            
+        }
+    </script>

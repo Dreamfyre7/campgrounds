@@ -1,0 +1,42 @@
+<%- include ('../partials/header') %>
+<div class="container">
+    <div class="row">
+        <h1 style="text-align:center">Edit your Profile</h1>
+        <div style="width:20%">
+            <form action="/user/<%=currentuser._id%>?_method=put" method="post" class="inline">
+                <div class="form-group">
+                    <input class="form-control"type="text" name="umodel[username]" value="<%=currentuser.username%>" title="you will be logged out if you edit username">
+                </div>
+                <div class="form-group">
+                    <input class="form-control"type="text" name="umodel[fullname]" value="<%=currentuser.fullname%>">
+                </div>
+                <div class="form-group" id="div">
+                    <select class="form-control"name="umodel[gender]">
+                        <option><%=currentuser.gender%></option>
+                        <option>Male</option>
+                        <option>Female</option>
+                        <option>Others</option>
+                    </select>
+                </div>
+                <div class=" form-group">
+                    <input class="form-control"type="email" name="umodel[email]" value="<%=currentuser.email%>">
+                </div>
+                <div class=" form-group"id="div">
+                    <input class="form-control"type="number" name="umodel[number]" value="<%=currentuser.number%>" minlength="8">
+                </div>
+                <div class=" form-group">
+                    <input class="form-control"type="text" name="umodel[display]" value="<%=currentuser.display%>">
+                </div>
+                <div class=" form-group">
+                    <input class="form-control" type="date" name="umodel[dob]"value="<%=currentuser.dob%>.toDateString()" required>
+                </div>
+                <div class=" form-group">
+                    <textarea name="umodel[bio]" rows="5" cols="46" ><%=currentuser.bio%></textarea>
+                </div>
+                <div class=" form-group">
+                    <button class="btn btn-lg btn-primary btn-block">submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

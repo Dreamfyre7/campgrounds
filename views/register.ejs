@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>WizCamp</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/stylesheets/main.css ">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+        <style>
+            .centered 
+            {
+                position: absolute;
+                top: 40%;
+                left: 30%;
+                color:white;
+                font-size:30px;
+            }
+        </style>
+    </head>
+    <body style="background: #000000;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to bottom, #434343, #000000);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, #434343, #000000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    ">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="/">WizCamp</a>
+                </div>
+                <div class="collapse navbar-collapse"> 
+                    <ul class="nav navbar-nav navbar-right">
+                        <% if (!currentuser){%>
+                            <li><a href="/login">Login</a></li>
+                            <li><a href="/register">Sign</a></li>
+                            <li><a href="/members">members</a></li>
+                            <li><a href="/">Landing</a></li>
+                            <li><a href="/campgrounds">Campgrounds</a></li>
+                        <% } else { %>
+                            <li><a href="/">Landing</a></li>
+                            <li><a href="/campgrounds">Campgrounds</a></li>
+                            <li><a href="/user/<%=currentuser._id%>">Signed in as <%=currentuser.username%></a></li>
+                            <li><a href="/logout">Logout</a></li>
+                        <% } %>    
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6" style="margin:0px;">
+                    <h1 style="text-align:center;color:white">Create a new account</h1>
+                    <div>
+                        <form action="/register" method="post">
+                            <div class="form-group">
+                                <input class="form-control"type="text" name="username" placeholder="username" required>
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control"type="text" name="fullname" placeholder="fullname" required> 
+                            </div>
+                            <div class="form-group" id="div">
+                                <input class="form-control"type="password" name="password" placeholder="password" required>
+                            </div>
+                            <div class="form-group" id="div">
+                                <select class="form-control"value="gender" name="gender" required>
+                                    <option>Choose a gender</option>
+                                    <option>Male</option>
+                                    <option>Female</option>
+                                    <option>Others</option>
+                                </select>
+                            </div>
+                            <div class=" form-group">
+                                <input class="form-control"type="email" name="email" placeholder="email" required>
+                            </div>
+                            <div class=" form-group"id="div">
+                                <input class="form-control"type="number" name="number" placeholder="number" minlength="10" maxlength="10"required>
+                            </div>
+                            <div class=" form-group">
+                                <input class="form-control"type="text" name="display" placeholder="profile pic url" required>
+                            </div>
+                            <div class=" form-group">
+                                <input class="form-control" type="date" name="dob" required>
+                            </div>
+                            <div class=" form-group"id="div">
+                                <textarea name="bio" rows="5" cols="46" placeholder="enter something about you"></textarea>
+                            </div>
+                            <div class=" form-group">
+                                <button class="btn btn-lg btn-primary btn-block">submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <img src="https://images.wallpaperscraft.com/image/tent_starry_sky_camping_122777_1920x1080.jpg" width="753" height="700">
+                    <div class="centered">Hello, camper!!
+                        <p>Fill up personal information and start camping with us.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

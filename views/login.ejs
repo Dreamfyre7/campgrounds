@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>WizCamp</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/stylesheets/main.css ">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+        <style>
+            #body{
+                background-image:url(https://images4.alphacoders.com/797/thumb-1920-797952.jpg);
+                background-repeat: fixed;
+                background-size:cover;
+            }
+        </style>
+    </head>
+    <body id="body">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="/">WizCamp</a>
+                </div>
+                <div class="collapse navbar-collapse"> 
+                    <ul class="nav navbar-nav navbar-right">
+                        <% if (!currentuser){%>
+                            <li><a href="/login">Login</a></li>
+                            <li><a href="/register">Sign</a></li>
+                            <li><a href="/members">members</a></li>
+                            <li><a href="/">Landing</a></li>
+                            <li><a href="/campgrounds">Campgrounds</a></li>
+                        <% } else { %>
+                            <li><a href="/">Landing</a></li>
+                            <li><a href="/campgrounds">Campgrounds</a></li>
+                            <li><a href="/user/<%=currentuser._id%>">Signed in as <%=currentuser.username%></a></li>
+                            <li><a href="/logout">Logout</a></li>
+                        <% } %>    
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="container">
+            <%if(error && error.length>0){%>
+                <div class="alert alert-danger"><%=error%></div>
+            <%}%>
+            <%if(success && success.length>0){%>    
+                <div class="alert alert-success"><%=success%></div>
+            <%}%>
+        </div>
+<div class="container">
+    <div class="row">
+        <h1 style="text-align:center;margin-top:150px;">Welcome back camper,let's camp!!</h1>
+        <div style="width:30%; margin: 25px auto">
+            <form action="/login" method="post">
+                <div class="form-group">
+                    <input class="form-control" type="text" name="username" placeholder="username">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="password" name="password" placeholder="password">
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-lg btn-primary btn-block">submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
